@@ -1,0 +1,14 @@
+---
+- name: Install tree on CentOS 7
+  hosts: all
+  become: yes
+  tasks:
+    - name: Install EPEL repository
+      ansible.builtin.yum:
+        name: epel-release
+        state: present
+
+    - name: Install tree package
+      ansible.builtin.yum:
+        name: tree
+        state: present
