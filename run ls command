@@ -1,0 +1,11 @@
+name: Run ls command on Ubuntu 22.04
+  hosts: all
+  become: no  # No need for sudo to run ls
+  tasks:
+    - name: Execute ls command
+      ansible.builtin.command: ls -l
+      register: ls_output  # Store output in a variable
+
+    - name: Display ls command output
+      debug:
+        var: ls_output.stdout_lines  # Print the output line by line
