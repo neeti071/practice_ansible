@@ -1,0 +1,11 @@
+---
+- name: Get ls output from remote machine
+  hosts: remote_host
+  tasks:
+    - name: Run ls command
+      command: ls
+      register: ls_output
+
+    - name: Show ls output
+      debug:
+        var: ls_output.stdout
