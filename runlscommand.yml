@@ -1,0 +1,12 @@
+---
+- name: Run ls command on Ubuntu 22.04
+  hosts: all
+  gather_facts: no  # Speeds up execution since we don't need facts
+  tasks:
+    - name: Execute ls command
+      command: ls -l
+      register: ls_output  # Store command output
+
+    - name: Display ls command output
+      debug:
+        msg: "{{ ls_output.stdout_lines }}"  # Print output properly
