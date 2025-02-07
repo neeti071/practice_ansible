@@ -1,12 +1,17 @@
 ---
 - name: Check Python Version
   hosts: all
-  gather_facts: no  # Don't collect default system facts
+  gather_facts: no
   tasks:
     - name: Run Python version command
       ansible.builtin.command: python --version
-      register: python_version  # Store command output
+      register: python_version
+      ignore_errors: yes  # Prevents playbook failure if Python is not found
+
+    - name: Debug full command output
+      ansible.builtin.debug:
+        var: python_version
 
     - name: Display Python version
       ansible.builtin.debug:
-        msg: "Python version: {{ python_version.stdout }}"
+        msg: "Python version: {{ python_version.stdout | default('Command failed or Python not found') }}"
