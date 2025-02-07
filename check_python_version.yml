@@ -1,0 +1,12 @@
+---
+- name: Check Python Version
+  hosts: all
+  gather_facts: no  # Don't collect default system facts
+  tasks:
+    - name: Run Python version command
+      ansible.builtin.command: python --version
+      register: python_version  # Store command output
+
+    - name: Display Python version
+      ansible.builtin.debug:
+        msg: "Python version: {{ python_version.stdout }}"
