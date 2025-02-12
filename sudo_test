@@ -1,0 +1,10 @@
+---
+- name: Test Ansible Connectivity and Privileges
+  hosts: all
+  become: yes
+  tasks:
+    - name: Test connection
+      ping:
+
+    - name: Test sudo privileges
+      command: whoami
