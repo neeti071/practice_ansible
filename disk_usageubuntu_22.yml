@@ -1,0 +1,12 @@
+---
+- name: Check Disk Usage on Ubuntu 22.04
+  hosts: all
+  become: yes
+  tasks:
+    - name: Check disk usage
+      command: df -Th
+      register: disk_usage_output
+
+    - name: Display disk usage
+      debug:
+        var: disk_usage_output.stdout_lines
