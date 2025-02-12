@@ -7,6 +7,6 @@
       command: df -Th
       register: disk_usage_output
 
-    - name: Debug entire output
+    - name: Display disk usage
       debug:
-        var: disk_usage_output
+        msg: "{{ disk_usage_output.stdout_lines if disk_usage_output.stdout_lines is defined else 'No output received' }}"
