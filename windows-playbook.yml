@@ -4,8 +4,3 @@
   tasks:
     - name: Check system info
       win_shell: systeminfo
-
-    - name: Create a folder on C:\ drive
-      win_file:
-        path: C:\Ansible_Test
-        state: directory
