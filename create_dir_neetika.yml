@@ -1,0 +1,11 @@
+---
+- name: Create a directory named 'neetika'
+  hosts: all  # Change this to your specific host group
+  become: yes  # Run with sudo privileges
+
+  tasks:
+    - name: Ensure the directory 'neetika' exists
+      file:
+        path: /home/cdac/neetika  # Change the path if needed
+        state: directory
+        mode: '0755'
