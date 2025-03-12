@@ -6,6 +6,6 @@
   tasks:
     - name: Ensure the directory exists
       file:
-        path: /path/to/directory  # Change this to the desired path
+        path: /home/cdac  # Change this to the desired path
         state: directory
         mode: '0755'
