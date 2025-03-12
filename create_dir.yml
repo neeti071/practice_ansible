@@ -1,0 +1,11 @@
+---
+- name: Create a directory
+  hosts: all  # Change this to the appropriate host group
+  become: yes  # Run as sudo if necessary
+
+  tasks:
+    - name: Ensure the directory exists
+      file:
+        path: /path/to/directory  # Change this to the desired path
+        state: directory
+        mode: '0755'
