@@ -1,0 +1,23 @@
+---
+- name: Perform multiple small tasks
+  hosts: all  # Change this to your specific host group
+  become: yes  # Run with sudo privileges
+
+  tasks:
+    - name: Ensure directory 'neetika' exists
+      file:
+        path: /home/cdac/neetika
+        state: directory
+        mode: '0755'
+
+    - name: Create a new file inside 'neetika' directory
+      file:
+        path: /home/cdac/neetika/example.txt
+        state: touch
+        mode: '0644'
+
+    - name: Add content to the file
+      copy:
+        dest: /home/cdac/neetika/example.txt
+        content: "Hello, this is an Ansible test file!\n"
+        mode: '0644'
